@@ -8,12 +8,12 @@ const config = {
   database: "nodedb",
 };
 const mysql = require("mysql");
-const connection = mysql.createConnection(config);
 
 const nomes = ["Eduardo", "Wesley", "Marcia", "Daniel", "Camila", "Dany"];
 let peoples = [];
 
 app.get("/", async (req, res) => {
+  const connection = mysql.createConnection(config);
   const sql = `INSERT INTO people(name) values("${
     nomes[Math.round(Math.random(6) * (5 - 0) + 0)]
   }")`;
