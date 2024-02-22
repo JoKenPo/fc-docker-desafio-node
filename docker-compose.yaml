@@ -30,8 +30,10 @@ services:
       dockerfile: Dockerfile
     container_name: app
     volumes: 
-      - ./node:/usr/src/app # Acho que agora eu entendi 😅
-    command: npm start
+      - ./node:/usr/src/app
+      # - /usr/src/app/node_modules # volume anonimo (link simbolico)
+    command: sh -c "npm install && npm start"
+    # command: sh -c "npm install && tail -f /dev/null"
     tty: true
     networks:
       - node-network
